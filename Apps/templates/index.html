@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+    Smart Hybrid Netflix Recommender
+</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+```
+
+</head>
+
+<body>
+
+```
+<!-- Logo -->
+
+<div class="logo-container">
+
+    <img
+        src="{{ url_for('static', filename='logo.png') }}"
+        alt="Logo"
+        class="logo">
+
+</div>
+
+<!-- Main Container -->
+
+<div class="container">
+
+    <h1>
+        Smart Hybrid Netflix Recommender
+    </h1>
+
+    <p>
+        AI-Powered Hybrid Movie Recommendation System
+    </p>
+
+    <!-- Search Form -->
+
+    <form action="/recommend"
+          method="POST">
+
+        <input
+            type="text"
+            name="movie"
+            placeholder="Enter Movie Name"
+            required>
+
+        <button type="submit">
+            Recommend
+        </button>
+
+    </form>
+
+    <!-- Searched Movie -->
+
+    {% if searched_poster %}
+
+    <div class="searched-movie">
+
+        <h2>
+            You Searched:
+            {{ searched_movie }}
+        </h2>
+
+        <img
+            src="{{ searched_poster }}"
+            alt="{{ searched_movie }}">
+
+    </div>
+
+    {% endif %}
+
+    <!-- Recommendations -->
+
+    {% if recommendations %}
+
+    <h2 class="recommend-title">
+
+        Recommended Movies
+
+    </h2>
+
+    <div class="movies-container">
+
+        {% for movie in recommendations %}
+
+        <div class="movie-card">
+
+            <img
+                src="{{ movie['poster'] }}"
+                alt="{{ movie['title'] }}">
+
+            <h3>
+
+                {{ movie['title'] }}
+
+            </h3>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+```
+
+</body>
+
+</html>

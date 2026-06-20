@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Popularity Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Popularity Prediction</h1>
+
+<form action="/predict_popularity"
+      method="POST">
+
+<input
+type="number"
+name="vote_count"
+placeholder="Vote Count"
+required>
+
+<br><br>
+
+<input
+type="number"
+step="0.1"
+name="vote_average"
+placeholder="Vote Average"
+required>
+
+<br><br>
+
+<button type="submit">
+
+Predict
+
+</button>
+
+</form>
+
+{% if prediction %}
+
+<h2>
+
+Predicted Popularity:
+
+{{ prediction }}
+
+</h2>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
